@@ -338,96 +338,34 @@ const environment = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _users_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users.service */ "U0XV");
-/* harmony import */ var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nav-bar/nav-bar.component */ "5hVl");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
-
+/* harmony import */ var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav-bar/nav-bar.component */ "5hVl");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
 
 
 
 
 class AppComponent {
-    constructor(user) {
-        this.user = user;
+    constructor() {
         this.title = 'HELOO ANGULAR';
-        this.user.getData().subscribe(data => {
-            console.log(data);
-            this.serverData = data;
-        });
     }
-    // sayHi() {
-    //   this.httpClient.get('http://127.0.0.1:5002/').subscribe(data => {
-    //     this.serverData = data as JSON;
-    //     console.log(this.serverData);
-    //   })
-    // }
     ngOnInit() {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
     }
 }
-AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_users_service__WEBPACK_IMPORTED_MODULE_1__["UsersService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 8, vars: 1, template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 2, vars: 0, template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-nav-bar");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "this is here");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "this is here");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "router-outlet");
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.serverData);
-    } }, directives: [_nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_2__["NavBarComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterOutlet"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "router-outlet");
+    } }, directives: [_nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_1__["NavBarComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterOutlet"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'app-root',
                 templateUrl: './app.component.html',
-                styleUrls: ['./app.component.scss']
+                styleUrls: ['./app.component.scss'],
             }]
-    }], function () { return [{ type: _users_service__WEBPACK_IMPORTED_MODULE_1__["UsersService"] }]; }, null); })();
-
-
-/***/ }),
-
-/***/ "U0XV":
-/*!**********************************!*\
-  !*** ./src/app/users.service.ts ***!
-  \**********************************/
-/*! exports provided: UsersService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsersService", function() { return UsersService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-
-
-
-class UsersService {
-    constructor(http) {
-        this.http = http;
-    }
-    getData() {
-        let url = "http://127.0.0.100:5000/api/v1.0/users";
-        let data = this.http.get(url);
-        return data;
-    }
-}
-UsersService.ɵfac = function UsersService_Factory(t) { return new (t || UsersService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
-UsersService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: UsersService, factory: UsersService.ɵfac, providedIn: 'root' });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UsersService, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-        args: [{
-                providedIn: 'root'
-            }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }]; }, null); })();
+    }], function () { return []; }, null); })();
 
 
 /***/ }),
@@ -461,22 +399,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/icon */ "NFeN");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 /* harmony import */ var _report_report_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./report/report.component */ "jw39");
-/* harmony import */ var _users_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./users.service */ "U0XV");
-
-
-
-
-
-//import { MaterialModule } from './material.module';
-
-
-
-
-
-
-
-
-// import { NavBarComponent } from './nav-bar/nav-bar.component';
+/* harmony import */ var _services_image_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./services/image.service */ "mnRn");
 
 
 
@@ -486,19 +409,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { HttpClientModule} from '@angular/common/http'
-// import { FormsModule } from '@angular/forms';
+
+
+
+
+
+
+
+
+
+
+
+
+
 class AppModule {
 }
 AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [_users_service__WEBPACK_IMPORTED_MODULE_19__["UsersService"]], imports: [[
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [_services_image_service__WEBPACK_IMPORTED_MODULE_19__["ImageService"]], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"],
             _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButtonModule"],
             _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_14__["MatToolbarModule"],
             _angular_material_icon__WEBPACK_IMPORTED_MODULE_16__["MatIconModule"],
-            // MaterialModule,
             _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"],
@@ -518,7 +451,6 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButtonModule"],
         _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_14__["MatToolbarModule"],
         _angular_material_icon__WEBPACK_IMPORTED_MODULE_16__["MatIconModule"],
-        // MaterialModule,
         _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"],
@@ -544,14 +476,13 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButtonModule"],
                     _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_14__["MatToolbarModule"],
                     _angular_material_icon__WEBPACK_IMPORTED_MODULE_16__["MatIconModule"],
-                    // MaterialModule,
                     _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"],
                     _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
                     _angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"],
                     _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["NoopAnimationsModule"],
                 ],
-                providers: [_users_service__WEBPACK_IMPORTED_MODULE_19__["UsersService"]],
-                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+                providers: [_services_image_service__WEBPACK_IMPORTED_MODULE_19__["ImageService"]],
+                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]],
             }]
     }], null, null); })();
 
@@ -925,6 +856,42 @@ ReportComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
 
 /***/ }),
 
+/***/ "mnRn":
+/*!*******************************************!*\
+  !*** ./src/app/services/image.service.ts ***!
+  \*******************************************/
+/*! exports provided: ImageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageService", function() { return ImageService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
+
+
+class ImageService {
+    constructor(http) {
+        this.http = http;
+        this.baseURL = 'http://127.0.0.1:5000/api';
+    }
+    postImage(formData) {
+        return this.http.post(this.baseURL + '/uploadImage', formData);
+    }
+}
+ImageService.ɵfac = function ImageService_Factory(t) { return new (t || ImageService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
+ImageService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: ImageService, factory: ImageService.ɵfac, providedIn: 'root' });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ImageService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+                providedIn: 'root',
+            }]
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }]; }, null); })();
+
+
+/***/ }),
+
 /***/ "s/+m":
 /*!************************************************!*\
   !*** ./src/app/diagnose/diagnose.component.ts ***!
@@ -936,69 +903,47 @@ ReportComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DiagnoseComponent", function() { return DiagnoseComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _services_image_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/image.service */ "mnRn");
 
 
 
 
 
-
-function DiagnoseComponent_span_15_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.message);
-} }
-function DiagnoseComponent_img_20_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "img", 11);
-} if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx_r2.imgURLs, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
-} }
 class DiagnoseComponent {
-    constructor(http) {
-        this.http = http;
-        this.url = "./assets/brain.jpg";
-        this.selectedFile = null;
-    }
-    preview(files) {
-        if (files.length === 0)
-            return;
-        var mimeType = files[0].type;
-        if (mimeType.match(/image\/*/) == null) {
-            this.message = "Only images are supported.";
-            return;
-        }
-        var reader = new FileReader();
-        this.imagePath = files;
-        reader.readAsDataURL(files[0]);
-        reader.onload = (_event) => {
-            this.imgURLs = reader.result;
-        };
-    }
-    ngOnInit() {
-    }
-    onFileSelect(event) {
-        this.selectedFile = event.target.files[0];
-    }
-    onUpload() {
-        let url = "http://127.0.0.100:5000/api/v1.0/imageUpload";
-        const fd = new FormData();
-        fd.append("image", this.selectedFile, this.selectedFile.name);
-        this.http.post(url, fd).subscribe(data => {
-            console.log(data);
+    constructor(imageSer) {
+        this.imageSer = imageSer;
+        this.ImageForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+            image: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null),
         });
     }
+    onImageSelect(event) {
+        console.log('image select call hua');
+        if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            this.ImageForm.get('image').setValue(file.filename);
+            const reader = new FileReader();
+            reader.onload = (_event) => {
+                this.imageFile = {
+                    file: file,
+                    name: file.filename,
+                };
+            };
+            console.log(event.srcElement.files[0]);
+            console.log(file);
+            reader.readAsDataURL(file);
+        }
+    }
+    submitImageForm() {
+        console.log('form submit hua');
+        const formData = new FormData();
+        formData.append('file', this.ImageForm.get('image').value);
+        this.imageSer.postImage(formData).subscribe();
+    }
+    ngOnInit() { }
 }
-DiagnoseComponent.ɵfac = function DiagnoseComponent_Factory(t) { return new (t || DiagnoseComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
-DiagnoseComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: DiagnoseComponent, selectors: [["app-diagnose"]], decls: 29, vars: 3, consts: [[1, "container", 2, "font-size", "15px"], ["src", "assets/images/thinkpng.jpg", "width", "500", 1, "img-responsive", 2, "height", "300"], [1, "container"], ["style", "color: red", 4, "ngIf"], ["type", "file", "accept", "image/*", 2, "font-size", "20px", 3, "change"], ["file", ""], ["height", "200", 3, "src", 4, "ngIf"], ["mat-button", "", "routerLink", "/report"], ["type", "file", "name", "image", 3, "change"], ["type", "button", 3, "click"], [2, "color", "red"], ["height", "200", 3, "src"]], template: function DiagnoseComponent_Template(rf, ctx) { if (rf & 1) {
-        const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+DiagnoseComponent.ɵfac = function DiagnoseComponent_Factory(t) { return new (t || DiagnoseComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_image_service__WEBPACK_IMPORTED_MODULE_2__["ImageService"])); };
+DiagnoseComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: DiagnoseComponent, selectors: [["app-diagnose"]], decls: 29, vars: 1, consts: [[1, "container", 2, "font-size", "15px"], ["src", "assets/images/thinkpng.jpg", "width", "500", 1, "img-responsive", 2, "height", "300"], [1, "container"], [3, "formGroup", "ngSubmit"], [1, "form-group", "form-row"], ["type", "file", "id", "image", "formControlName", "image", "accept", "image/*", 3, "change"], ["type", "submit", 1, "btn", "btn-primary"]], template: function DiagnoseComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "b");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Instructions To Upload Image");
@@ -1021,45 +966,41 @@ DiagnoseComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "img", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, DiagnoseComponent_span_15_Template, 2, 1, "span", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "input", 4, 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function DiagnoseComponent_Template_input_change_16_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r3); const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](17); return ctx.preview(_r1.files); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "form", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function DiagnoseComponent_Template_form_ngSubmit_18_listener() { return ctx.submitImageForm(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "select an image ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](18, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "input", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function DiagnoseComponent_Template_input_change_23_listener($event) { return ctx.onImageSelect($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, DiagnoseComponent_img_20_Template, 1, 1, "img", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "button", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Check this");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "input", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "input", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function DiagnoseComponent_Template_input_change_26_listener($event) { return ctx.onFileSelect($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "button", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DiagnoseComponent_Template_button_click_27_listener() { return ctx.onUpload(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Send to server");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](26, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "br");
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.message);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.imgURLs);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.imgURLs);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_3__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"]], styles: ["myform-wrapper[_ngcontent-%COMP%] {\n  margin: 50px;\n  width: 350px;\n}\nmyform-wrapper[_ngcontent-%COMP%]   .mat-form-field[_ngcontent-%COMP%] {\n  width: 100%;\n}\nmyform-wrapper[_ngcontent-%COMP%]   .mat-toolbar-single-row[_ngcontent-%COMP%] {\n  height: auto !important;\n  background: transparent;\n}\nmyform-wrapper[_ngcontent-%COMP%]   .mat-toolbar-single-row[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  width: 30%;\n}\n#fileUpload[_ngcontent-%COMP%] {\n  position: absolute;\n  z-index: 9;\n  opacity: 0;\n  height: 100%;\n  width: 100%;\n  left: 0px;\n  top: 0px;\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGlhZ25vc2UvZGlhZ25vc2UuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxZQUFBO0VBQ0EsWUFBQTtBQUNKO0FBQ0k7RUFDSSxXQUFBO0FBQ1I7QUFFSTtFQUNJLHVCQUFBO0VBQ0EsdUJBQUE7QUFBUjtBQUVRO0VBQ0ksVUFBQTtBQUFaO0FBS0E7RUFDSSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFDQSxTQUFBO0VBQ0EsUUFBQTtFQUNBLGVBQUE7QUFGSiIsImZpbGUiOiJzcmMvYXBwL2RpYWdub3NlL2RpYWdub3NlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsibXlmb3JtLXdyYXBwZXIge1xyXG4gICAgbWFyZ2luOiA1MHB4O1xyXG4gICAgd2lkdGg6IDM1MHB4O1xyXG5cclxuICAgIC5tYXQtZm9ybS1maWVsZCB7XHJcbiAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICB9XHJcblxyXG4gICAgLm1hdC10b29sYmFyLXNpbmdsZS1yb3cge1xyXG4gICAgICAgIGhlaWdodDogYXV0byAhaW1wb3J0YW50O1xyXG4gICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG5cclxuICAgICAgICBidXR0b24ge1xyXG4gICAgICAgICAgICB3aWR0aDogMzAlO1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufVxyXG5cclxuI2ZpbGVVcGxvYWQge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogOTtcclxuICAgIG9wYWNpdHk6IDA7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGxlZnQ6IDBweDtcclxuICAgIHRvcDogMHB4O1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG59Il19 */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.ImageForm);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"]], styles: ["myform-wrapper[_ngcontent-%COMP%] {\n  margin: 50px;\n  width: 350px;\n}\nmyform-wrapper[_ngcontent-%COMP%]   .mat-form-field[_ngcontent-%COMP%] {\n  width: 100%;\n}\nmyform-wrapper[_ngcontent-%COMP%]   .mat-toolbar-single-row[_ngcontent-%COMP%] {\n  height: auto !important;\n  background: transparent;\n}\nmyform-wrapper[_ngcontent-%COMP%]   .mat-toolbar-single-row[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  width: 30%;\n}\n#fileUpload[_ngcontent-%COMP%] {\n  position: absolute;\n  z-index: 9;\n  opacity: 0;\n  height: 100%;\n  width: 100%;\n  left: 0px;\n  top: 0px;\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGlhZ25vc2UvZGlhZ25vc2UuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxZQUFBO0VBQ0EsWUFBQTtBQUNKO0FBQ0k7RUFDSSxXQUFBO0FBQ1I7QUFFSTtFQUNJLHVCQUFBO0VBQ0EsdUJBQUE7QUFBUjtBQUVRO0VBQ0ksVUFBQTtBQUFaO0FBS0E7RUFDSSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFDQSxTQUFBO0VBQ0EsUUFBQTtFQUNBLGVBQUE7QUFGSiIsImZpbGUiOiJzcmMvYXBwL2RpYWdub3NlL2RpYWdub3NlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsibXlmb3JtLXdyYXBwZXIge1xyXG4gICAgbWFyZ2luOiA1MHB4O1xyXG4gICAgd2lkdGg6IDM1MHB4O1xyXG5cclxuICAgIC5tYXQtZm9ybS1maWVsZCB7XHJcbiAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICB9XHJcblxyXG4gICAgLm1hdC10b29sYmFyLXNpbmdsZS1yb3cge1xyXG4gICAgICAgIGhlaWdodDogYXV0byAhaW1wb3J0YW50O1xyXG4gICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG5cclxuICAgICAgICBidXR0b24ge1xyXG4gICAgICAgICAgICB3aWR0aDogMzAlO1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufVxyXG5cclxuI2ZpbGVVcGxvYWQge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogOTtcclxuICAgIG9wYWNpdHk6IDA7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGxlZnQ6IDBweDtcclxuICAgIHRvcDogMHB4O1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG59Il19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DiagnoseComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'app-diagnose',
                 templateUrl: './diagnose.component.html',
-                styleUrls: ['./diagnose.component.scss']
+                styleUrls: ['./diagnose.component.scss'],
             }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }]; }, null); })();
+    }], function () { return [{ type: _services_image_service__WEBPACK_IMPORTED_MODULE_2__["ImageService"] }]; }, null); })();
 
 
 /***/ }),
