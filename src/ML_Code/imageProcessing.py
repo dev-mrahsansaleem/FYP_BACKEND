@@ -10,12 +10,6 @@ from PIL import Image
 from src import app
 
 
-def get_response_image(image_path):
-    with open(image_path, "rb") as img_file:
-        encoded_Image = b64encode(img_file.read())
-    return encoded_Image.decode("utf-8")
-
-
 def Resize(img):
     # image = np.asarray(img)
     resized_Img = cv2.resize(img, (208, 176), interpolation=cv2.INTER_LINEAR)
@@ -69,13 +63,13 @@ def imageProcessing(inputImagePath, inputFileName):
     brain_extracted_img_Path = join(app.config['UPLOAD_FOLDER'],
                                     "extraction_" + inputFileName)
     brain_extracted_img_File.save(brain_extracted_img_Path)
-    encoded_extration_image = get_response_image(brain_extracted_img_Path)
+    # encoded_extration_image = get_response_image(brain_extracted_img_Path)
 
     # enhanced saving and decodeing
     enhanced_brain_img_File = Image.fromarray(enhanced_brain_img)
     brain_enhanced_img_Path = join(app.config['UPLOAD_FOLDER'],
                                    "enhanced_" + inputFileName)
     enhanced_brain_img_File.save(brain_enhanced_img_Path)
-    encoded_enhanced_image = get_response_image(brain_enhanced_img_Path)
+    # encoded_enhanced_image = get_response_image(brain_enhanced_img_Path)
 
-    return encoded_extration_image, encoded_enhanced_image
+    return brain_extracted_img_Path, brain_enhanced_img_Path
