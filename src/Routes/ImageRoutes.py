@@ -34,7 +34,6 @@ def storeImageInDp(imagePath, imageName, parentOF, user_publicID):
     cursor.execute(SQLCommand, Values)
     imageId = cursor.fetchone()[0]
     conn.commit()
-    # imageId = 0
     return imageId
 
 
@@ -43,24 +42,24 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/")
-def testFunction():
-    return "Hello world..."
-
-
 @app.route("/Image", methods=['POST'])
 @cross_origin()
 @token_required
 def upload_file(current_user):
     if 'file' not in request.files:
         flash('No file part')
-        return {"status": "no file part added"}, 201
+        return jsonify({"status": "no file part added"}), 404
+
     file = request.files['file']
     # if user does not select file, browser also
     # submit an empty part without filename
     if file.filename == '':
         flash('No selected file')
-        return {"status": "no selected file"}, 201
+        return jsonify({"status": "no selected file"}), 404
+
+    if not allowed_file(file.filename):
+        return jsonify({"status": "invalid file type"}), 404
+
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         # filename = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_")+filename
@@ -76,10 +75,6 @@ def upload_file(current_user):
         # saving in db
         imageID = storeImageInDp(inputImagePath, filename, None,
                                  current_user.publicID)
-
-        print("=======================================================")
-        print(imageID)
-        print("=======================================================")
         storeImageInDp(brain_extracted_img_Path, "extraction_" + filename,
                        imageID, current_user.publicID)
         storeImageInDp(brain_enhanced_img_Path, "enhanced_" + filename,
