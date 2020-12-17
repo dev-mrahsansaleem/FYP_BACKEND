@@ -13,6 +13,7 @@ def token_required(f):
         token = None
         if 'x-access-token' in request.headers:
             token = request.headers['x-access-token']
+            # print("token in token_req" + token)
         if not token:
             return jsonify({"status": "no token found"}), 401
 

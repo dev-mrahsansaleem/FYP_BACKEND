@@ -98,7 +98,7 @@ def register():
 @cross_origin()
 def login():
     auth = request.authorization
-    print(auth)
+    # print(auth)
     if not auth or not auth.username or not auth.password:
         return jsonify({"status": "auth no correct"})
 

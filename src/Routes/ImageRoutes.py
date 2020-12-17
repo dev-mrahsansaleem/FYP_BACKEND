@@ -42,7 +42,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/Image", methods=['POST'])
+@app.route("/api/Image", methods=['POST'])
 @cross_origin()
 @token_required
 def upload_file(current_user):
