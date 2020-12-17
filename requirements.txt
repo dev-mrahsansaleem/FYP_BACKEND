@@ -10,4 +10,3 @@ numpy==1.16.5
 Werkzeug==0.16.0
 Pillow==8.0.1
 PyJWT==1.7.1
-skimage==0.0
