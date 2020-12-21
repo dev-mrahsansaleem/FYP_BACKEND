@@ -10,12 +10,12 @@ from functools import wraps
 from flask_cors import CORS
 import uuid
 import jwt
-import cv2
 import numpy as np
 from PIL import Image
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from base64 import b64encode
+import cv2
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
