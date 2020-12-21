@@ -3,7 +3,7 @@ from flask.helpers import flash
 from numpy.lib.type_check import imag
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors.decorator import cross_origin
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from datetime import datetime, timedelta
 from os.path import isdir, join
 from functools import wraps
@@ -222,6 +222,11 @@ def imageProcessing(inputImagePath, inputFileName):
 def Enhancement(en_img):
     ret, enhancedImage = cv2.threshold(en_img, 130, 255, cv2.THRESH_TOZERO)
     return enhancedImage
+
+
+@app.route('/')
+def webPage():
+    return render_template('index.html')
 
 
 # user routes
