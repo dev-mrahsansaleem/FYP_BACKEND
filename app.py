@@ -29,8 +29,6 @@ app.config['SECRET_KEY'] = 'iAmSecretkey'
 currentENV = "pro"
 
 if currentENV == "pro":
-    app.use_reloader = False
-    app.debug = False
     app.config[
         'SQLALCHEMY_DATABASE_URI'] = 'postgres://dyoujoahgzwngd:0e8d96e971c5ed4b7b6c5a8852e0b18165ec4aa6c91b561390bcd08f8a992634@ec2-52-203-182-92.compute-1.amazonaws.com:5432/dgkc0vbh46sc8'
     print("production env")
