@@ -258,7 +258,7 @@ def register():
 @cross_origin()
 def login():
     if request.method == 'POST':
-        auth = request.get_json()
+        auth = request.authorization
         print(auth)
         if not auth or not auth.username or not auth.password:
             return jsonify({"status": "auth no found"}), 200
