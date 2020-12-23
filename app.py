@@ -258,14 +258,14 @@ def register():
 @cross_origin()
 def login():
     if request.method == 'POST':
-        auth = request.authorization
-        # print(auth)
+        auth = request.get_json()
+        print(auth)
         if not auth or not auth.username or not auth.password:
-            return jsonify({"status": "auth no found"}), 404
+            return jsonify({"status": "auth no found"}), 200
 
         if db.session.query(Users).filter(
                 Users.username == auth.username).count() == 0:
-            return jsonify({"status": "User not found"}), 404
+            return jsonify({"status": "User not found"}), 200
         else:
             data = users_schema.dump(
                 db.session.query(Users).filter(
@@ -286,7 +286,6 @@ def login():
 
                 return jsonify({'token': token}), 201
             return jsonify({"status": "Invalid Password"}), 404
-
     else:
         return jsonify({'status': 'request type not found'}), 405
 
