@@ -222,8 +222,9 @@ def Enhancement(en_img):
 
 
 @app.route('/')
+@cross_origin()
 def webPage():
-    return render_template('index.html')
+    return "working"
 
 
 # user routes
