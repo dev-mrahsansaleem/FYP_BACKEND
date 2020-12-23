@@ -1,6 +1,5 @@
 from os import mkdir
 from flask.helpers import flash
-from numpy.lib.type_check import imag
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors.decorator import cross_origin
 from flask import Flask, request, jsonify, render_template
@@ -249,7 +248,7 @@ def register():
         db.session.add(userData)
         db.session.commit()
         # data = user_schema.dump(userData) #this can b pass to jsonify
-        return jsonify({'status': 'ok'}), 201
+        return jsonify({'status': 'ok', "public_id": publicID}), 201
     else:
         return jsonify({'status': 'request type not found'}), 405
 
