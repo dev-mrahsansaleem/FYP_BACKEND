@@ -6,6 +6,7 @@ filelock==3.0.12
 Flask==1.1.2
 Flask-Cors==3.0.9
 flask-marshmallow==0.14.0
+marshmallow-sqlalchemy == 0.24.1
 Flask-SQLAlchemy==2.4.4
 itsdangerous==1.1.0
 Jinja2==2.11.2
