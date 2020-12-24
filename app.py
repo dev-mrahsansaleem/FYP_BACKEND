@@ -150,8 +150,8 @@ def token_required(f):
         if not token:
             return jsonify({"status": "no token found"}), 401
 
+        data = jwt.decode(token, app.config['SECRET_KEY'])
         try:
-            data = jwt.decode(token, app.config['SECRET_KEY'])
             public_id = data['public_id']
             current_user = users_schema.dump(
                 db.session.query(Users).filter(
@@ -161,7 +161,7 @@ def token_required(f):
             # cursor.execute(SQLCommand)
             # current_user = "cursor.fetchone()"
         except:
-            return jsonify({"status": "invalid token"}), 401
+            return jsonify({"data": data, "status": "invalid token"}), 401
 
         return f(current_user, *args, **kwargs)
 
@@ -284,7 +284,7 @@ def login():
                         'exp': datetime.utcnow() + timedelta(minutes=30)
                     }, app.config['SECRET_KEY'])
 
-                return jsonify({'token': token.decode('utf-8')}), 201
+                return jsonify({'token': token}), 201
             return jsonify({"status": "Invalid Password"}), 404
     else:
         return jsonify({'status': 'request type not found'}), 405
