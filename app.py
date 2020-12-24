@@ -140,36 +140,6 @@ def storeImageInDp(imagePath, imageName, parentOF, user_publicID):
     return -1
 
 
-def token_required(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        token = None
-        if 'x-access-token' in request.headers:
-            token = request.headers['x-access-token']
-            # print("token in token_req" + token)
-        if not token:
-            return jsonify({"status": "no token found"}), 401
-
-        try:
-            data = jwt.decode(token,
-                              app.config['SECRET_KEY'],
-                              algorithm=["HS256"])
-            public_id = data['public_id']
-            current_user = users_schema.dump(
-                db.session.query(Users).filter(
-                    Users.public_id == public_id))[0]
-            # SQLCommand = f"SELECT * FROM tblUsers WHERE publicID = \'{public_id}\'"
-            # SQLCommand = f"SELECT * FROM tblUsers WHERE username = \'{auth.username}\' AND  userpass = \'{auth.password}\'"
-            # cursor.execute(SQLCommand)
-            # current_user = "cursor.fetchone()"
-        except:
-            return jsonify({"status": "invalid token"}), 401
-
-        return f(current_user, *args, **kwargs)
-
-    return decorated
-
-
 def Resize(img):
     # image = np.asarray(img)
     resized_Img = cv2.resize(img, (208, 176), interpolation=cv2.INTER_LINEAR)
@@ -221,6 +191,34 @@ def imageProcessing(inputImagePath, inputFileName):
 def Enhancement(en_img):
     ret, enhancedImage = cv2.threshold(en_img, 130, 255, cv2.THRESH_TOZERO)
     return enhancedImage
+
+
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+            # print("token in token_req" + token)
+        if not token:
+            return jsonify({"status": "no token found"}), 401
+
+        data = jwt.decode(token, app.config['SECRET_KEY'], algorithm=["HS256"])
+        try:
+            public_id = data['public_id']
+            current_user = users_schema.dump(
+                db.session.query(Users).filter(
+                    Users.public_id == public_id))[0]
+            # SQLCommand = f"SELECT * FROM tblUsers WHERE publicID = \'{public_id}\'"
+            # SQLCommand = f"SELECT * FROM tblUsers WHERE username = \'{auth.username}\' AND  userpass = \'{auth.password}\'"
+            # cursor.execute(SQLCommand)
+            # current_user = "cursor.fetchone()"
+        except:
+            return jsonify({"status": "invalid token", "data": data}), 401
+
+        return f(current_user, *args, **kwargs)
+
+    return decorated
 
 
 @app.route('/')
