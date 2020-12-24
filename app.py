@@ -286,7 +286,7 @@ def login():
                         'exp': datetime.utcnow() + timedelta(minutes=30)
                     },
                     app.config['SECRET_KEY'],
-                    algorithm="HS256").decode('UTF-8')
+                    algorithm="HS256")
 
                 return jsonify({'token': token}), 201
             return jsonify({"status": "Invalid Password"}), 404
