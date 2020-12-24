@@ -163,7 +163,7 @@ def token_required(f):
             # cursor.execute(SQLCommand)
             # current_user = "cursor.fetchone()"
         except:
-            return jsonify({"data": data, "status": "invalid token"}), 401
+            return jsonify({"status": "invalid token"}), 401
 
         return f(current_user, *args, **kwargs)
 
