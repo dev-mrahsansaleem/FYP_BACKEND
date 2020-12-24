@@ -203,7 +203,9 @@ def token_required(f):
         if not token:
             return jsonify({"status": "no token found"}), 401
 
-        data = jwt.decode(token, app.config['SECRET_KEY'], algorithm=["HS256"])
+        data = jwt.decode(token,
+                          app.config['SECRET_KEY'],
+                          algorithms=["HS256"])
         try:
             public_id = data['public_id']
             current_user = users_schema.dump(
