@@ -150,8 +150,10 @@ def token_required(f):
         if not token:
             return jsonify({"status": "no token found"}), 401
 
-        data = jwt.decode(token, app.config['SECRET_KEY'])
         try:
+            data = jwt.decode(token,
+                              app.config['SECRET_KEY'],
+                              algorithm=["HS256"])
             public_id = data['public_id']
             current_user = users_schema.dump(
                 db.session.query(Users).filter(
@@ -282,7 +284,9 @@ def login():
                     {
                         'public_id': publicID,
                         'exp': datetime.utcnow() + timedelta(minutes=30)
-                    }, app.config['SECRET_KEY']).decode('UTF-8')
+                    },
+                    app.config['SECRET_KEY'],
+                    algorithm="HS256").decode('UTF-8')
 
                 return jsonify({'token': token}), 201
             return jsonify({"status": "Invalid Password"}), 404
