@@ -10,9 +10,13 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 
 def get_response_image(image_path):
-    with open(image_path, "rb") as img_file:
-        encoded_Image = b64encode(img_file.read())
-    return encoded_Image.decode("utf-8")
+    try:
+        with open(image_path, "rb") as img_file:
+            encoded_Image = b64encode(img_file.read())
+        return encoded_Image.decode("utf-8")
+    except print(0):
+        return "notFound"
+        pass
 
 
 def allowed_file(filename):
