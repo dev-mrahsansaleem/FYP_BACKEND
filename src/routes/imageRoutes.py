@@ -69,7 +69,6 @@ def getHistory(current_user):
             Images.createdBy == current_user["public_id"])
         data = images_schema.dump(queryResult)
 
-        response = []
         for d in data:
             d["image"] = get_response_image(d["image"])
 
