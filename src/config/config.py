@@ -1,4 +1,3 @@
-import sqlalchemy
 from src import app
 
 from flask_sqlalchemy import SQLAlchemy
