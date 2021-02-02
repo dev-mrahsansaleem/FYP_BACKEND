@@ -72,7 +72,11 @@ def login():
                     app.config['SECRET_KEY'],
                     algorithm="HS256")
 
-                return jsonify({'token': token, "data": data}), 201
+                return jsonify({
+                    'token': token,
+                    "data": data,
+                    "username": username
+                }), 201
             return jsonify({"status": "Invalid Password"}), 404
     else:
         return jsonify({'status': 'request type not found'}), 405
