@@ -57,7 +57,7 @@ def token_required(f):
                 db.session.query(Users).filter(
                     Users.public_id == public_id))[0]
         except:
-            return jsonify({"status": "invalid token", "data": data}), 401
+            return jsonify({"status": "invalid token"}), 401
 
         return f(current_user, *args, **kwargs)
 
