@@ -14,5 +14,5 @@ def webPage():
 @app.route('/api/testTokken')
 @cross_origin()
 @token_required
-def testTokken():
+def testTokken(current_user):
     return jsonify({"status": "tokken is valid"})
