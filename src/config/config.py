@@ -8,7 +8,7 @@ UPLOAD_FOLDER = './images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECRET_KEY'] = 'iAmSecretkey'
 
-currentENV = "pro"
+currentENV = "dev"
 
 if currentENV == "pro":
     app.config[
