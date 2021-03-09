@@ -1,14 +1,19 @@
+import shutil
+import nibabel
+import imageio
+
 from src import app
 from src.config.config import Images, db, images_schema
+from src.helper.functions import token_required, allowed_file, storeImageInDp, get_response_image
+from src.helper.machineLearningFunctions import imageProcessing
 
+from math import floor
 from flask.helpers import flash
 from flask_cors.decorator import cross_origin
 from flask import request, jsonify
-from src.helper.functions import token_required, allowed_file, storeImageInDp, get_response_image
-from src.helper.machineLearningFunctions import imageProcessing
 from werkzeug.utils import secure_filename
 from os import mkdir
-from os.path import isdir, join
+from os.path import isdir, join, exists
 
 
 # image routes
@@ -26,16 +31,50 @@ def sendImage(current_user):
         if file.filename == '':
             flash('Selected a file')
             return jsonify({"status": "image not attached to file"}), 404
+        exten, isAllow = allowed_file(file.filename)
+        if not isAllow:
+            print(exten)
+            return jsonify({"status": "invalid file type" + exten}), 404
 
-        if not allowed_file(file.filename):
-            return jsonify({"status": "invalid file type"}), 404
-
-        filename = secure_filename(file.filename)
         if not isdir(app.config['UPLOAD_FOLDER']):
             mkdir(app.config['UPLOAD_FOLDER'])
 
-        inputImagePath = join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(inputImagePath)
+        if not isdir(app.config['UPLOAD_FOLDER'] + "/NII_FILES"):
+            mkdir(app.config['UPLOAD_FOLDER'] + "/NII_FILES")
+
+        if not isdir(app.config['UPLOAD_FOLDER'] + "/InputImage"):
+            mkdir(app.config['UPLOAD_FOLDER'] + "/InputImage")
+
+        if exten == 'nii':
+            filename = secure_filename(file.filename)
+            niifilePath = join(app.config['UPLOAD_FOLDER'] + "/NII_FILES",
+                               filename)
+            file.save(niifilePath)
+            image_array = nibabel.load(niifilePath).get_data()
+            total_volumes = image_array.shape[3]
+            total_slices = image_array.shape[2]
+            current_slice = floor(total_slices / 2)
+            current_volume = floor(total_volumes / 2)
+            data = image_array[:, :, current_slice, current_volume]
+
+            filename = filename[:-4] + "_t" + "{:0>3}".format(
+                str(current_volume + 1)) + "_z" + "{:0>3}".format(
+                    str(current_slice + 1)) + ".png"
+            if not exists(filename):
+                imageio.imwrite(filename, data)
+                print('Saved.')
+            inputImagePath = join(app.config['UPLOAD_FOLDER'] + "/InputImage",
+                                  filename)
+            print('Moving files...')
+            src = filename
+            shutil.move(src, inputImagePath)
+            print('Moved.')
+            # TODO: convert file in png ans assign it's path to inputImagePath
+        else:
+            filename = secure_filename(file.filename)
+            inputImagePath = join(app.config['UPLOAD_FOLDER'] + "/InputImage",
+                                  filename)
+            file.save(inputImagePath)
 
         brain_extracted_img_Path, brain_enhanced_img_Path = imageProcessing(
             inputImagePath, filename)
@@ -45,6 +84,7 @@ def sendImage(current_user):
 
         storeImageInDp(brain_extracted_img_Path, "extracted_" + filename,
                        inputImageId, current_user['public_id'])
+
         storeImageInDp(brain_enhanced_img_Path, "enhanced_" + filename,
                        inputImageId, current_user['public_id'])
 

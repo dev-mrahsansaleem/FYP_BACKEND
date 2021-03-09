@@ -1,3 +1,4 @@
+from os import mkdir
 from src import app
 
 import numpy as np
@@ -43,13 +44,20 @@ def imageProcessing(inputImagePath, inputFileName):
     enhanced_brain_img = Enhancement(brain_extracted_img)
 
     brain_extracted_img_File = Image.fromarray(brain_extracted_img)
-    brain_extracted_img_Path = join(app.config['UPLOAD_FOLDER'],
-                                    "extraction_" + inputFileName)
+
+    if not isdir(app.config['UPLOAD_FOLDER'] + "/extraction"):
+        mkdir(app.config['UPLOAD_FOLDER'] + "/extraction")
+    brain_extracted_img_Path = join(
+        app.config['UPLOAD_FOLDER'] + "/extraction",
+        "extraction_" + inputFileName)
     brain_extracted_img_File.save(brain_extracted_img_Path)
 
     # enhanced saving and decodeing
+    if not isdir(app.config['UPLOAD_FOLDER'] + "/enhanced"):
+        mkdir(app.config['UPLOAD_FOLDER'] + "/enhanced")
+
     enhanced_brain_img_File = Image.fromarray(enhanced_brain_img)
-    brain_enhanced_img_Path = join(app.config['UPLOAD_FOLDER'],
+    brain_enhanced_img_Path = join(app.config['UPLOAD_FOLDER'] + "/enhanced",
                                    "enhanced_" + inputFileName)
     enhanced_brain_img_File.save(brain_enhanced_img_Path)
 

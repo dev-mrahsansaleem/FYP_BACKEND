@@ -6,7 +6,7 @@ from functools import wraps
 from src import app
 import jwt
 
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'nii', 'nifi'}
 
 
 def get_response_image(image_path):
@@ -20,8 +20,9 @@ def get_response_image(image_path):
 
 
 def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    fileextention = filename.rsplit('.', 1)[1].lower()
+    return fileextention , '.' in filename and \
+           fileextention in ALLOWED_EXTENSIONS
 
 
 def storeImageInDp(imagePath, imageName, parentOF, user_publicID):

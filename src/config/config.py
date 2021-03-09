@@ -1,15 +1,18 @@
 from src import app
+from flask_cors import CORS
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+
+CORS(app)
 
 UPLOAD_FOLDER = './images'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECRET_KEY'] = 'iAmSecretkey'
 
-# currentENV = "dev"
-currentENV = "pro"
+currentENV = "dev"
+# currentENV = "pro"
 
 if currentENV == "pro":
     app.config[
