@@ -22,8 +22,9 @@ else:
     # app.host = ["127.0.0.100"]
     # app.port = 6000
     app.debug = True
+    # 'postgresql://username:pass@localhost/db'
     app.config[
-        'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@localhost/FYP_TEMP_DB'
+        'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@localhost/fyp_temp_db'
     print("devlopment env")
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -36,12 +37,12 @@ ma = Marshmallow(app)
 
 
 class Users(db.Model):
-    __tablename__ = 'tblUsers'
+    __tablename__ = 'tblusers'
     id = db.Column(db.Integer, primary_key=True)
     public_id = db.Column(db.String(200), unique=True)
     username = db.Column(db.String(200), unique=True)
     password = db.Column(db.String(200))
-    createdOn = db.Column(db.String(200))
+    createdon = db.Column(db.String(200))
 
     def __init__(self, public_id, username, password):
         self.public_id = public_id
@@ -67,28 +68,28 @@ users_schema = UserSchema(many=True)
 
 
 class Images(db.Model):
-    __tablename__ = "tblImages"
+    __tablename__ = "tblimages"
     id = db.Column(db.Integer, primary_key=True)
-    imageName = db.Column(db.String(200))
+    imagename = db.Column(db.String(200))
     image = db.Column(db.Text())
-    parentOf = db.Column(db.Integer)
-    createdBy = db.Column(db.String(200))
-    createdOn = db.Column(db.String(200))
+    parentof = db.Column(db.Integer)
+    createdby = db.Column(db.String(200))
+    createdon = db.Column(db.String(200))
 
     # -1 mean input image otherwise id of input image will be assign
 
     def __init__(self, imageName, image, parentOf, createdBy):
-        self.imageName = imageName
+        self.imagename = imageName
         self.image = image
-        self.parentOf = parentOf
-        self.createdBy = createdBy
+        self.parentof = parentOf
+        self.createdby = createdBy
 
     def __init__(self, imageName, image, parentOf, createdBy, createdOn):
-        self.imageName = imageName
+        self.imagename = imageName
         self.image = image
-        self.parentOf = parentOf
-        self.createdBy = createdBy
-        self.createdOn = createdOn
+        self.parentof = parentOf
+        self.createdby = createdBy
+        self.createdon = createdOn
 
 
 # Schemas

@@ -15,14 +15,14 @@ from werkzeug.utils import secure_filename
 from os import mkdir
 from os.path import isdir, join, exists
 
-
 # image routes
-@app.route("/api/sendImage", methods=['POST'])
+
+
 @cross_origin()
+@app.route("/api/sendImage", methods=['POST'])
 @token_required
 def sendImage(current_user):
     if request.method == 'POST':
-
         if 'file' not in request.files:
             flash('Attach a file')
             return jsonify({"status": "no file part added"}), 404
@@ -100,13 +100,13 @@ def sendImage(current_user):
         }), 201
 
 
-@app.route("/api/history", methods=['GET'])
 @cross_origin()
+@app.route("/api/history", methods=['GET'])
 @token_required
 def getHistory(current_user):
     if request.method == "GET":
         queryResult = db.session.query(Images).filter(
-            Images.createdBy == current_user["public_id"])
+            Images.createdby == current_user["public_id"])
         data = images_schema.dump(queryResult)
 
         for d in data:
