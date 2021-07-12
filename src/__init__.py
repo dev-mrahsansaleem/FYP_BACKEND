@@ -7,5 +7,5 @@ from src.config import config
 
 # routes
 from src.routes import rootRoute
-from src.routes import imageRoutes
 from src.routes import userRoutes
+from src.routes import imageRoutes

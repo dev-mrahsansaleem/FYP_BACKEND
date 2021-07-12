@@ -7,8 +7,10 @@ from flask_marshmallow import Marshmallow
 CORS(app)
 
 UPLOAD_FOLDER = './images'
+MODEL_FOLDER = "./model"
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MODEL_FOLDER'] = MODEL_FOLDER
 app.config['SECRET_KEY'] = 'iAmSecretkey'
 
 currentENV = "dev"

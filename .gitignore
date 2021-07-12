@@ -138,3 +138,8 @@ dmypy.json
 cython_debug/
 
 # custom folder
+images/
+
+*.zip
+
+src/routes/model
